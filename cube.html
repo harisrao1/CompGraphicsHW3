@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	
+</head>
+<script id="vertex-shader" type="x-shader/x-vertex">
+#version 300 es
+
+in  vec4 aPosition;
+in  vec4 aColor;
+out vec4 vColor;
+
+uniform mat4 uMatrix;//this matrix will represent the model, view and projection (if enabled) transforms
+
+void main()
+{
+    vColor = aColor;
+    gl_Position = uMatrix * aPosition;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+#version 300 es
+
+precision mediump float;
+
+in vec4 vColor;
+out vec4 fColor;
+
+void
+main()
+{
+    fColor = vColor;
+}
+</script>
+
+<script type="text/javascript" src="./Common/initShaders.js"></script>
+<script type="text/javascript" src="./Common/MVnew.js"></script>
+<script type="text/javascript" src="cube.js"></script>
+
+<body>
+<canvas id="gl-canvas" width="720" height="720">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+<div class="slidecontainer" style = "position:left">
+	<input type="range" min="-240" max="240" value="0" class="slider" id="xrot">
+		<label for="xrot">X Rotation</label>
+	</input>
+	<input type="range" min="-240" max="240" value="0" class="slider" id="yrot">
+		<label for="yrot">Y Rotation</label>
+	</input>
+	<input type="range" min="-240" max="240" value="0" class="slider" id="zrot">
+		<label for="zrot">Z Rotation</label>
+	</input>
+</div>
+<div class="slidecontainer2" style = "position:left">
+	<input type="range" min="-240" max="240" value="0" class="slider" id="xpos">
+		<label for="xpos">X Position</label>
+	</input>
+	<input type="range" min="-240" max="240" value="0" class="slider" id="ypos">
+		<label for="ypos">Y Position</label>
+	</input>
+	<input type="range" min="-240" max="240" value="0" class="slider" id="zpos">
+		<label for="zpos">Z Position</label>
+	</input>
+	<input type="radio" id="lookAtCube" name = "look" style="position:relative; top:50px">
+	  <label for="lookAtCube" style="position:relative; top:50px">Look at cube</label>
+	<input type="radio" id="lookAtOrigin" name = "look" style="position:relative; top:50px">
+	  <label for="lookAtOrigin" style="position:relative; top:50px">Look at Origin</label>
+	  
+
+	
+	
+
+</div>
+<br/>
+
+
+
+
+
+ 
+</body>
+</html>
